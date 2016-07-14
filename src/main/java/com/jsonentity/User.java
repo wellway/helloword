@@ -2,10 +2,16 @@ package com.jsonentity;
 
 import java.io.Serializable;
 
+import com.alibaba.fastjson.annotation.JSONField;
+/**
+ * @JSONField(serialize = false)时用来忽略不想序列化的字段的，但是如果加了final，这个字段就无法被过滤
+ * @author qiqi
+ *
+ */
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	@JSONField(serialize = false)
 	private String id;
 	private String name;
 	private int age;
