@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head> 
+  <title></title> 
+  <style type="text/css">
+body {
+	margin-left: 45px;
+	margin-right: 45px;
+	font-family: Arial Unicode MS;
+	font-size: 10px;
+}
+
+table {
+	margin: auto;
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid #444444;
+}
+
+th,td {
+	border: 1px solid #444444;
+	font-size: 14px;
+	margin-left: 5px;
+}
+
+.mcContent {
+	line-height: 180%;
+	padding: 20px;
+}
+
+.logo {
+	text-align: center;
+}
+
+.title {
+	text-align: center;
+	font-size: 18px;
+}
+
+.notes {
+	font-weight: normal;
+	margin-left: 5px;
+	margin-right: 5px;
+	line-height: 18px;
+}
+
+.text_content {
+	margin-left: 5px;
+	margin-right: 5px;
+	line-height: 18px;
+}
+
+.sum_insured_first_row {
+	width: 20%;
+}
+
+.sum_insured_span {
+	font-size: 10px;
+}
+
+.special_agreements_div {
+	page-break-before: always;
+	font-size: 14px;
+	margin-top: 20px;
+}
+
+.special_agreements_div .special_agreements {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.title_right {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.title_right p {
+	text-align: left;
+	margin: 0;
+	margin-left: 50%;
+	padding: 0;
+}
+
+@page {
+	size: 8.5in 11in;
+@
+bottom-center {
+		content: "page "
+counter(
+page
+)
+" of  "
+counter(
+pages
+);
+	}
+
+	.signature {
+		margin: 0 auto;
+		clear: both;
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	.signature_table {
+/*     font-size: 16px; */
+		font-weight: bold;
+	}
+
+ 
+</style> 
+ </head> 
+ <body>
+    
+  <div> 
+    
+  
+   <div> 
+    <p class="title">投资者申请参与国金证券承销的首次公开发行股票变更申请表及承诺函</p> 
+    
+     
+    <table style="font-size: 16px;"> 
+     <tbody>
+       <tr style="height: 30px;"> 
+       <td align="right" width="20%">投资者类型</td> 
+       <td align="left"  width="30%">${checkType!}</td> 
+       <td align="right" width="20%"></td> 
+       <td align="left"  width="30%"></td> 
+      </tr>       
+      
+      <tr  style="height: 30px;">  
+       <td align="right">经办人手机号码</td> 
+       <td>${checkMobile!}</td> 
+       <td  align="right">原经办人手机号码</td> 
+       <td  align="left">${checkMobile1!}</td> 
+      </tr> 
+      <#if checkSfz??>
+      <tr  style="height: 30px;">  
+       <td align="right">投资者姓名</td> 
+       <td>${checkName!}</td> 
+       <td  align="right">身份证号码</td> 
+       <td  align="left" >${checkSfz!}</td> 
+      </tr> 
+      <tr  style="height: 30px;">  
+       <td  align="right">网下投资者协会编码</td> 
+       <td  align="left" colspan="3">${checkAssociationCode!}</td> 
+      </tr> 
+      <#else>
+      <tr  style="height: 30px;">  
+       <td align="right">机构名称</td> 
+       <td>${checkName!}</td> 
+       <td  align="right">网下投资者协会编码</td> 
+       <td  align="left" >${checkAssociationCode!}</td> 
+      </tr> 
+      
+      </#if>
+     <tr style="height: 500px;">
+     <td colspan="4" valign="top" >
+     	<p style="margin: 10px">          
+			<div style="padding-left: 20px;margin-top: 20px;">本人/本机构申请参与国金证券承销的首次公开发行股票网下投资者信息报备。</div>
+			<div style="padding-left: 20px;margin-top: 10px;">本人/本机构因故需更换绑定手机，原绑定手机作废，现申请以经办人手机号码为本人/本机构唯一</div>
+			<div style="margin-top: 10px;">绑定手机。</div>
+			<div style="padding-left: 20px;margin-top: 10px;">本人通过绑定手机号码登陆后在线填报的行为将被视为本人/本机构的行为，具有法律效力。
+</div>
+			 
+			<div style="padding-left: 20px;margin-top: 10px;">本人/本机构承诺向国金证券提供的<strong>所有资料和信息均真实、准确、完整</strong>。</div>
+			<div style="padding-left: 20px;margin-top: 10px;">如因本人/本机构未能在规定时间内提交公告要求的申报材料、提交材料内容不完整、或经审查属于</div>
+			<div style="margin-top: 10px;">证监会承销管理办法第十六条规定的禁止配售情形的，国金证券有权将本人/本机构排除在可以参加初</div>
+			<div style="margin-top: 10px;">步询价的投资者范围之外或将本人/本机构报价确认为无效并剔除。</div>
+		     
+		</p>
+            </td>
+        </tr>
+        <tr> 
+	       <td colspan="4" height="50px;">
+					<div style="text-align:right;margin-top:20px;margin-right: 200px;margin-bottom: 20px;">  网下投资者（个人签名/机构盖章）:</div>
+					<div style="text-align:right;margin-top:0px;margin-right: 200px;margin-bottom: 20px;">日期:</div>
+			</td> 	       
+	      </tr>
+     </tbody>
+    </table> 
+		         <div style="font-size:14px;float:right;fonmargin-top:20px;margin-bottom:20px;margin-right: 80px;"> 打印日期：${now}</div>
+   </div> 
+  </div>  
+ </body>
+</html>

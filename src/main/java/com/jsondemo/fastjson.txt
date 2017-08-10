@@ -19,5 +19,7 @@
 6.json解析Map  JsonObject 本身就是map
    Map<String, Object> map1 = JSON.parseObject(jsonStr);//返回JSONObject，JSONObject实现Map<String, Object>接口 
    Map<String, Object> map1 = (Map<String, Object>)JSON.parse(jsonStr); 
+   
+   
 注解：
 1.字段

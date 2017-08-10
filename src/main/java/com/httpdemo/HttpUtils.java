@@ -8,13 +8,24 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 
 public class HttpUtils {
 	public static void main(String[] args) {
 		try {
-			get("http://mvms.yicai.com/api/analysts?sort=initial");
+//			get("http://mvms.yicai.com/api/analysts?sort=initial");
+		//	get("http://10.26.5.97:8090/simulatetrade/simulate?action=GetChannel&channel_id=11");
+			Map<String,Object> map = new HashMap<String, Object>();
+			map.put("productName", 1235);
+			String paraStr = JSON.toJSONString(map,
+					SerializerFeature.BrowserCompatible);
+			post("http://localhost:8081/chaogu/productmanager.do",paraStr);
+			System.out.println(paraStr);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -87,7 +98,9 @@ public class HttpUtils {
 		while ((line = br.readLine()) != null) {
 			sb.append(line + "\n");
 		}
-		// System.out.println(decodeUnicode(sb.toString()));
+		 System.out.println(decodeUnicode(sb.toString()));
+		 urlConnection.disconnect();
+		 in.close();
 		return decodeUnicode(sb.toString());
 	}
 
