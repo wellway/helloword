@@ -1,4 +1,4 @@
-package com.erweima;
+/*package com.erweima;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -19,10 +19,10 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.sun.org.apache.xml.internal.security.utils.Base64;
 
 
-/** * @Description: (二维码) * @author：luoguohui * @date：2015-10-29 下午05:27:13 */
+
+*//** * @Description: (二维码) * @author：luoguohui * @date：2015-10-29 下午05:27:13 *//*
 public class ZXingCode {
     private static final int QRCOLOR = 0xFF000000;   //默认是黑色
     private static final int BGWHITE = 0xFFFFFFFF;   //背景颜色
@@ -41,7 +41,7 @@ public class ZXingCode {
     }  
 
 
-    /** * 生成带logo的二维码图片 * * @param qrPic * @param logoPic */
+    *//** * 生成带logo的二维码图片 * * @param qrPic * @param logoPic *//*
     public static String getLogoQRCode(String qrUrl,HttpServletRequest request,String productName)
     {
 // String filePath = request.getSession().getServletContext().getRealPath("/") + "resources/images/logoImages/llhlogo.png";
@@ -61,25 +61,25 @@ public class ZXingCode {
         return null;
     }
 
-    /** * 给二维码图片添加Logo * * @param qrPic * @param logoPic */
+    *//** * 给二维码图片添加Logo * * @param qrPic * @param logoPic *//*
     public String addLogo_QRCode(BufferedImage bim, File logoPic, LogoConfig logoConfig, String productName)
     {
         try
         {
-            /** * 读取二维码图片，并构建绘图对象 */
+            *//** * 读取二维码图片，并构建绘图对象 *//*
             BufferedImage image = bim;
             Graphics2D g = image.createGraphics();
 
-            /** * 读取Logo图片 */
+            *//** * 读取Logo图片 *//*
             BufferedImage logo = ImageIO.read(logoPic);
-            /** * 设置logo的大小,本人设置为二维码图片的20%,因为过大会盖掉二维码 */
+            *//** * 设置logo的大小,本人设置为二维码图片的20%,因为过大会盖掉二维码 *//*
             int widthLogo = logo.getWidth(null)>image.getWidth()*3/10?(image.getWidth()*3/10):logo.getWidth(null), 
                 heightLogo = logo.getHeight(null)>image.getHeight()*3/10?(image.getHeight()*3/10):logo.getWidth(null);
 
-            /** * logo放在中心 */
+            *//** * logo放在中心 *//*
              int x = (image.getWidth() - widthLogo) / 2;
              int y = (image.getHeight() - heightLogo) / 2;
-             /** * logo放在右下角 * int x = (image.getWidth() - widthLogo); * int y = (image.getHeight() - heightLogo); */
+             *//** * logo放在右下角 * int x = (image.getWidth() - widthLogo); * int y = (image.getHeight() - heightLogo); *//*
 
             //开始绘制图片
             g.drawImage(logo, x, y, widthLogo, heightLogo, null);
@@ -148,7 +148,7 @@ public class ZXingCode {
     }
 
 
-    /** * 构建初始化二维码 * * @param bm * @return */
+    *//** * 构建初始化二维码 * * @param bm * @return *//*
     public BufferedImage fileToBufferedImage(BitMatrix bm)
     {
         BufferedImage image = null;
@@ -173,7 +173,7 @@ public class ZXingCode {
         return image;
     }
 
-    /** * 生成二维码bufferedImage图片 * * @param content * 编码内容 * @param barcodeFormat * 编码类型 * @param width * 图片宽度 * @param height * 图片高度 * @param hints * 设置参数 * @return */
+    *//** * 生成二维码bufferedImage图片 * * @param content * 编码内容 * @param barcodeFormat * 编码类型 * @param width * 图片宽度 * @param height * 图片高度 * @param hints * 设置参数 * @return *//*
     public BufferedImage getQR_CODEBufferedImage(String content, BarcodeFormat barcodeFormat, int width, int height, Map<EncodeHintType, ?> hints)
     {
         MultiFormatWriter multiFormatWriter = null;
@@ -204,7 +204,7 @@ public class ZXingCode {
         return image;
     }
 
-    /** * 设置二维码的格式参数 * * @return */
+    *//** * 设置二维码的格式参数 * * @return *//*
     public Map<EncodeHintType, Object> getDecodeHintType()
     {
         // 用于设置QR二维码参数
@@ -234,7 +234,7 @@ public class ZXingCode {
         private final Color borderColor;
         private final int logoPart;
 
-        /** * Creates a default config with on color {@link #BLACK} and off color * {@link #WHITE}, generating normal black-on-white barcodes. */
+        *//** * Creates a default config with on color {@link #BLACK} and off color * {@link #WHITE}, generating normal black-on-white barcodes. *//*
         public LogoConfig()
         {
             this(DEFAULT_BORDERCOLOR, DEFAULT_LOGOPART);
@@ -261,3 +261,4 @@ public class ZXingCode {
             return logoPart;
         }
     }
+*/

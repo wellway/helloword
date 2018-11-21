@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 public class httpUrl {
 	public static void main(String[] args) {
 		httpDownload("http://table.finance.yahoo.com/table.csv?s=000001.sz","d:/test.csv");
@@ -20,7 +22,7 @@ public class httpUrl {
 	  
 	       URL url = null;  
 	    try {  
-	        url = new URL(httpUrl);  
+	        url = new URL("http://qt.gtimg.cn/?q=stdunixtime,marketStat,usDJI,r_hkHSI");  
 	    } catch (MalformedURLException e1) {  
 	        e1.printStackTrace();  
 	        return false;  
@@ -33,7 +35,7 @@ public class httpUrl {
            BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inStream));
            String str1=null;
            while((str1=bufferedReader.readLine())!=null){
-        	   System.out.println(str1);
+        	   System.out.println(new String(str1.getBytes("GBK"), "utf-8"));
            }
 //           FileOutputStream fs = new FileOutputStream(saveFile);  
 ////  

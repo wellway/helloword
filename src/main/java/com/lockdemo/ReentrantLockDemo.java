@@ -14,19 +14,17 @@ import java.util.concurrent.locks.ReentrantLock;
  *
  */
 public class ReentrantLockDemo {
-	ReentrantLock lock = new ReentrantLock();
-	private Map<String, Object> map = new HashMap<String, Object>();
+	ReentrantLock				lock	= new ReentrantLock();
+	private Map<String, Object>	map		= new HashMap<String, Object>();
 
 	public void read(String i) {
 
 		try {
 			long start = System.currentTimeMillis();
-			System.out.println("start lock read: " + i + "..syc count.."
-					+ lock.getHoldCount());
+			System.out.println("start lock read: " + i + "..syc count.." + lock.getHoldCount());
 			lock.lock();
 			long end = System.currentTimeMillis();
-			System.out.println("end   lock read: " + i + "..spend times.."
-					+ (end - start) + "..syc count.." + lock.getHoldCount());
+			System.out.println("end   lock read: " + i + "..spend times.." + (end - start) + "..syc count.." + lock.getHoldCount());
 			Thread.sleep(1000 * 8);
 			System.out.println(map);
 		} catch (Exception e) {
@@ -39,12 +37,10 @@ public class ReentrantLockDemo {
 	public void write(String i) {
 		try {
 			long start = System.currentTimeMillis();
-			System.out.println("start lock write :" + i + "..syc count.."
-					+ lock.getHoldCount());
+			System.out.println("start lock write :" + i + "..syc count.." + lock.getHoldCount());
 			lock.lock();
 			long end = System.currentTimeMillis();
-			System.out.println("end   lock write :" + i + "..spend times.."
-					+ (end - start) + "..syc count.." + lock.getHoldCount());
+			System.out.println("end   lock write :" + i + "..spend times.." + (end - start) + "..syc count.." + lock.getHoldCount());
 			Thread.sleep(2000);
 			map.put(i, i);
 		} catch (Exception e) {

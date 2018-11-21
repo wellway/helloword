@@ -1,14 +1,16 @@
 package com.jsonentity;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Address implements Serializable {
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private String province;
-	private String city;
-	private String street;
-	private String post;
+	private String				province;
+	private String				city;
+	private String				street;
+	private String				post;
+	private List<TagRec>		kdj;
 
 	public Address() {
 		super();
@@ -52,6 +54,14 @@ public class Address implements Serializable {
 
 	public void setStreet(String street) {
 		this.street = street;
+	}
+
+	public List<TagRec> getKdj() {
+		return kdj;
+	}
+
+	public void setKdj(List<TagRec> kdj) {
+		this.kdj = kdj;
 	}
 
 }

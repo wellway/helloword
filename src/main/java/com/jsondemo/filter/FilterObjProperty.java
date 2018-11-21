@@ -1,0 +1,52 @@
+package com.jsondemo.filter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.alibaba.fastjson.serializer.JSONSerializer;
+import com.alibaba.fastjson.serializer.SerializeWriter;
+import com.jsonentity.Address;
+import com.jsonentity.TagRec;
+
+public class FilterObjProperty {
+	public static void main(String[] args) {
+		FilterObjProperty filter = new FilterObjProperty();
+		List<Address> list = new ArrayList<Address>();
+		Address address = new Address("113","nihao","ff","555");
+		
+		list.add(address);
+		HashMap<String, String> dict = new HashMap<String, String>();
+		dict.put("column", "province,city");
+		filter.getMsgByNeedColumn(dict, list);
+	}
+	
+	
+	protected static List<Map<String, Object>> getMsgByNeedColumn(HashMap<String, String> dict, Object rec) {
+		String[] result = null;
+		if (dict.containsKey("column")) {
+			String allcolumn = dict.get("column");
+			result = allcolumn.split(",");
+		}
+		ReportPropertyFilter filter = new ReportPropertyFilter(result);
+		String msg;
+		if (result != null && !"".equals(result)) {
+			SerializeWriter sw = new SerializeWriter();
+			JSONSerializer serialize = new JSONSerializer(sw);
+			serialize.getPropertyFilters().add(filter);
+			serialize.write(rec);
+			msg = sw.toString();
+		} else {
+			msg = JSON.toJSONString(rec);
+		}
+		List<Map<String, Object>> listMap = JSON.parseObject(msg,
+				new TypeReference<List<Map<String, Object>>>() {
+				});
+		System.out.println("==="+listMap);
+		return listMap;
+		
+	}
+}
