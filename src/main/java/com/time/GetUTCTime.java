@@ -43,7 +43,7 @@ public class GetUTCTime {
         TimeZone york = TimeZone.getTimeZone("America/New_York"); //GMT-5
        	
         System.out.println("目标时区是否使用了夏令时:"+isDaylight(york, gc.getNeworkDate()));
-
+        System.out.println("美国当前时间："+gc.getNeworkTime());
 
 	}
 
