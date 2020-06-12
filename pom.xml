@@ -26,7 +26,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.2.5</version>
+			<version>1.2.25.sec10</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -173,7 +173,7 @@
 		<dependency>
 			<groupId>com.rabbitmq</groupId>
 			<artifactId>amqp-client</artifactId>
-			<version>3.6.5</version>
+			<version>4.8.0</version>
 		</dependency>
 		<dependency>
 			<groupId>cglib</groupId>
