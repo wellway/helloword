@@ -25,7 +25,7 @@ public class MapHandle {
 		map.put("b", "bbbbb");
 		map.put("a", "aaaaa");
 		map.put("c", "ccccc");
-
+		
 		System.out.println("key exist return old value：" + map.put("c", 1111));
 		System.out.println("key exist return old value：" + map.put("c", 22222));
 		System.out.println("key not exist return null ：" + map.put("e", 1111));
@@ -38,7 +38,7 @@ public class MapHandle {
 		map.put("b", "bbbbb");
 		map.put("a", "aaaaa");
 		map.put("c", "ccccc");
-
+		deepCloneMap(map);
 	}
 
 	/**
@@ -47,14 +47,18 @@ public class MapHandle {
 	 * @param src
 	 * @return
 	 */
-	public Map<Object, Object> deepCloneMap(Map<Object, Object> src) {
-		Map<Object, Object> des = new HashMap<Object, Object>();
-		for (Iterator<Object> it = src.keySet().iterator(); it.hasNext();) {
-			Object key = it.next();
+	
+	public Map<String, Object> deepCloneMap(Map<String, Object> src) {
+		Map<String, Object> des = new HashMap<String, Object>();
+		for (Iterator<String> it = src.keySet().iterator(); it.hasNext();) {
+			String key = it.next();
 			Object value = src.get(key);
 			des.put(key, value);
+			System.out.println(11);
+			return des;
 			// des.put(key.clone(),value.clone());
 		}
+		System.out.println(22);
 		return des;
 	}
 }

@@ -16,17 +16,14 @@ public class Person implements Serializable {
      */
     private static final long serialVersionUID = -5809782578272943999L;
     private int age;
-    private String name;
+    private static String name;
     private String sex;
 
     public int getAge() {
         return age;
     }
 
-    public String getName() {
-        return name;
-    }
-
+  
     public String getSex() {
         return sex;
     }
@@ -35,11 +32,18 @@ public class Person implements Serializable {
         this.age = age;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+ 
+    public static String getName() {
+		return name;
+	}
 
-    public void setSex(String sex) {
+
+	public static void setName(String name) {
+		Person.name = name;
+	}
+
+
+	public void setSex(String sex) {
         this.sex = sex;
     }
 }

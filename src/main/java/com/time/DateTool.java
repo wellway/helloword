@@ -2,6 +2,7 @@ package com.time;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
@@ -242,4 +243,170 @@ public final class DateTool {
 				"yyyy-MM-dd HH:mm:ss", dstTimeZoneId);
 	}
 
+	//判断是否在夏令时
+	public static boolean isDaylight(TimeZone zone, Date date) {
+		return zone.useDaylightTime() && zone.inDaylightTime(date);
+	}
+	
+	/**
+	 * 判断两个日期是否在同一个月
+	 * 
+	 * @param currDate
+	 * @return
+	 */
+	public static Boolean isTradeDateByMonth(int currDate, int lastDate) {
+		Boolean flag = false;
+		String cur = String.valueOf(currDate).substring(4, 6);
+		String last = String.valueOf(lastDate).substring(4, 6);
+		if (cur.equals(last))
+			flag = true;
+
+		return flag;
+	}
+
+	/**
+	 * 判断日期是否周一
+	 * 
+	 * @param currDate
+	 * @return
+	 */
+	public static Boolean isMonday(int currDate) {
+		Boolean flag = false;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		String current = String.valueOf(currDate);
+		Date curDate = null;
+		try {
+			curDate = sdf.parse(current);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		if (curDate.getDay() == 1) {
+			flag = true;
+		}
+		return flag;
+	}
+	/**
+	 * 两个日期是否为同一周
+	 * 
+	 * @param date1
+	 * @param date2
+	 * @return
+	 */
+	public static boolean isWeekSame(String date1, String date2) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		Date d1 = null;
+		Date d2 = null;
+		try {
+			d1 = format.parse(date1);
+			d2 = format.parse(date2);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Calendar cal1 = Calendar.getInstance();
+		Calendar cal2 = Calendar.getInstance();
+		cal1.setTime(d1);
+		cal2.setTime(d2);
+		int subYear = cal1.get(Calendar.YEAR) - cal2.get(Calendar.YEAR);
+		// subYear==0,说明是同一年
+		if (subYear == 0) {
+			if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2
+					.get(Calendar.WEEK_OF_YEAR))
+				return true;
+		} else
+			if (subYear == 1 && cal2.get(Calendar.MONTH) == 11) {
+				if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2
+						.get(Calendar.WEEK_OF_YEAR))
+					return true;
+			} else
+				if (subYear == -1 && cal1.get(Calendar.MONTH) == 11) {
+					if (cal1.get(Calendar.WEEK_OF_YEAR) == cal2
+							.get(Calendar.WEEK_OF_YEAR))
+						return true;
+				}
+		return false;
+	}
+
+	/**
+	 * 计算下一个日期
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static int nextDate(int date, int num) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		Calendar cal = Calendar.getInstance();
+		Date nenxtDate = null;
+		try {
+			nenxtDate = sdf.parse(String.valueOf(date));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		cal.setTime(nenxtDate);
+		cal.set(Calendar.DATE, cal.get(Calendar.DATE) + num);
+		int intDate = Integer.parseInt(sdf.format(cal.getTime()));
+		return intDate;
+	}
+
+	/**
+	 * 计算下一个日期
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static String nextDate(String formate, String date, int num) {
+		SimpleDateFormat sdf = new SimpleDateFormat(formate);
+		String[] str = date.split("-");
+		Calendar cal = Calendar.getInstance();
+		cal.set(Integer.parseInt(str[0]), Integer.parseInt(str[1]) - 1, Integer.parseInt(str[2]));
+		cal.set(Calendar.DATE, cal.get(Calendar.DATE) + num);
+		return sdf.format(cal.getTime());
+	}
+
+	/**
+	 * 计算下一个日期
+	 * 
+	 * @param date
+	 * @return
+	 */
+	public static String lastDate(String date) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		Calendar cal = Calendar.getInstance();
+		Date nenxtDate = null;
+		try {
+			nenxtDate = sdf.parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		cal.setTime(nenxtDate);
+		cal.set(Calendar.DATE, cal.get(Calendar.DATE) - 1);
+		String intDate = sdf.format(cal.getTime());
+		return intDate;
+	}
+
+	/**
+	 * 日期格式转换 --年月日
+	 * 
+	 * @param date
+	 *            20151207132730
+	 * @return
+	 */
+	public static String getDate(long date) {
+		String str = String.valueOf(date);
+		String ymd = str.substring(0, 8);
+		return ymd;
+
+	}
+
+	/**
+	 * 日期格式转换 -- 时分秒
+	 * 
+	 * @param date
+	 *            20151207132730
+	 * @return
+	 */
+	public static String getHMS(long date) {
+		String str = String.valueOf(date);
+		String hms = str.substring(8, 14);
+		return hms;
+	}
 }

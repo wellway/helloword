@@ -37,7 +37,7 @@ public class CreateHtmlByFreemarker {
             User user = new User("tom", "hahahah", 28, "上海市");
             
             //设置输出文件
-            File file = new File("d:/result.html");
+            File file = new File("src/main/java/com/freemarker/static/result.html");
             if(!file.exists()) {
                 file.createNewFile();
             }
