@@ -3,7 +3,7 @@ package com.jvmdemo;
 public class IntegerDemo {
 	public static void main(String[] args) {
 		Integer a = 2;
-		int b = 2;
+		Integer b = 2;
 		Integer a1 = 128;
 		Integer b1 = 128;
 		int a2 = 400;

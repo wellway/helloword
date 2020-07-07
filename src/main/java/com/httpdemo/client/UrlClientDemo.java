@@ -68,7 +68,7 @@ public class UrlClientDemo {
 	private static void get(){
 		URLConnection urlConnection=null;
 		try {
-			URL url = new URL("http://mvms.yicai.com/api/analysts?sort=initial");
+			URL url = new URL("http://127.0.0.1:8081/server");
 		    urlConnection = url.openConnection();                                                    // 打开连接
 		    BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(),"utf-8")); // 获取输入流
 		    String line = null;

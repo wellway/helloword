@@ -11,6 +11,9 @@ public class TestRuntimeAnnotation {
 
 	@FieldInfo(value = { 10086 })
 	public int		i			= 100;
+	
+	
+	public int		y			= 100;
 
 	@MethodInfo(name = "BlueBird", data = "Big")
 	public static String getMethodInfo() {
